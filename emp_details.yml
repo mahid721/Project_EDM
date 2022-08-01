@@ -1,0 +1,16 @@
+empdetails :
+  region :
+    hyderabd :
+      emp_id1 :
+          name : Mahesh Dasari
+          age : 24
+          salary : 1000
+      emp_id2 :
+          name: Gurunadh
+          age: 24
+          salary: 2000
+          description : >
+            My name is Mahesh
+            I am from Andhra Pradesh
+            My father name is srinivasulu
+            he is farmer
