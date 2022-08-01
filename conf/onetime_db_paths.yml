@@ -2,12 +2,15 @@
     driver : SQL Server Native Client 11.0
     server : MAHESHDASARI
     database : Mahesh
-  data_file_path : 'D:\Project_EDM\Project_emp_data\dt=2022-07-15\hr=10\Employee_V1.csv'
+  data_file_path :
+    - 'D:\Project_EDM\Project_emp_data\dt=2022-07-15\hr=10\Employee_V1.csv'
   SQLS:
     DDL :
-      - 'D:\Project_EDM\SQL\onetime\file_load\create_raw_emp_tbl.sql'
+      - 'D:\Project_EDM\SQL\onetime\file_load\create_temp_emp_table.sql'
+      - 'D:\Project_EDM\SQL\onetime\table_load\create_raw_emp_tbl.sql'
       - 'D:\Project_EDM\SQL\onetime\table_load\create_final_emp_tbl.sql'
     DML :
-      - 'D:\Project_EDM\SQL\onetime\file_load\insert_raw_emp_tbl.sql'
+      - 'D:\Project_EDM\SQL\onetime\file_load\insert_temp_emp_tbl.sql'
+      - 'D:\Project_EDM\SQL\onetime\table_load\insert_raw_emp_tbl.sql'
       - 'D:\Project_EDM\SQL\onetime\table_load\insert_final_emp_tbl.sql'
 
