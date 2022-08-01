@@ -1,0 +1,16 @@
+mydetails:
+  name : Mahesh Dasari
+  age : 24
+  wife :
+    name : samantha
+    age : 20
+  childrens:
+    - children1 :
+        name : Gurunadh
+        age : 24
+    - children2 :
+        name : Siva
+        age : 26
+    - children3 :
+        name : Sandeep
+        age : 28
