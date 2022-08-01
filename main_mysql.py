@@ -2,8 +2,8 @@ from utils.sqlserver_utils import mysql_connector
 import yaml
 from yaml.loader import SafeLoader
 
-# Open the file and load the file
-with open("conf/my_db.yml", 'r') as f:
+
+with open("conf/onetime_db_paths.yml", 'r') as f:
     data = yaml.load(f, Loader=SafeLoader)
     # print(data['mydb']['driver'])
 
