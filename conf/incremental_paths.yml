@@ -2,16 +2,18 @@
     driver : SQL Server Native Client 11.0
     server : MAHESHDASARI
     database : project_edm
-  base_path :
-      - 'E:\DATA\EDM\incremental\hourly\dt=2022-05-10\hr=13\emp_data.csv'
+  base_path : 'E:\DATA\EDM\incremental\'
+  execution_interval : hourly
+  file_name: emp_data.csv
+  last_processed_file : 2022-07-29 13:00:00
   SQLS:
     DDL :
       - 'D:\Project_EDM\SQL\incremental\file_load\create_temp_emp_tbl_inc.sql'
       - 'D:\Project_EDM\SQL\incremental\table_load\create_raw_emp_tbl_inc.sql'
       - 'D:\Project_EDM\SQL\incremental\table_load\create_final_emp_tbl_inc.sql'
-      - 'D:\Project_EDM\SQL\incremental\create_file_execution_audit_inc.sql'
+#      - 'D:\Project_EDM\SQL\incremental\create_file_execution_audit_inc.sql'
     DML :
       - 'D:\Project_EDM\SQL\incremental\file_load\insert_temp_emp_tbl_inc.sql'
       - 'D:\Project_EDM\SQL\incremental\table_load\insert_raw_emp_tbl_inc.sql'
       - 'D:\Project_EDM\SQL\incremental\table_load\insert_final_emp_tbl_inc.sql'
-      - 'D:\Project_EDM\SQL\incremental\table_load\insert_file_execution_audit_inc.sql'
+#      - 'D:\Project_EDM\SQL\incremental\insert_file_execution_audit_inc.sql'

@@ -33,23 +33,30 @@ class mysql_connector:
             rows = rows.replace('\n', '')
             self.cursor_obj.execute(sql_insert_temp, *rows.split(','))
 
-    def insert_sql_table_load(self, insert_sql_filepath):
+    def insert_sql_table_load(self, insert_sql_filepath, variable_dict):
         insert_file = open(insert_sql_filepath, 'r')
         sql_insert_table_load = insert_file.read()
-        file_path_csv1 = self.file_path_csv.split('\\')
-        date_file = '1990-01-01'
-        hour_file = random.randint(0, 23)
-        self.cursor_obj.execute(sql_insert_table_load)
+        self.cursor_obj.execute(sql_insert_table_load.format(**variable_dict))
         insert_file.close()
 
-    def insert_sql_control_table(self, insert_sql_filepath):
+    def insert_sql_control_table(self, insert_sql_filepath, usecase, loadinterval, lastprocess):
         insert_file = open(insert_sql_filepath, 'r')
         sql_insert_table_load = insert_file.read()
-        file_path_csv1 = self.file_path_csv.split('\\')
-        date_file = '1990-01-01'
-        hour_file = random.randint(0, 23)
-        self.cursor_obj.execute(sql_insert_table_load)
+        self.cursor_obj.execute(sql_insert_table_load,usecase_name = usecase, load_interval= loadinterval, last_process = lastprocess)
         insert_file.close()
+
+    # def insert_sql_table_load(self, insert_sql_filepath, variable_dict):
+    #     insert_file = open(insert_sql_filepath, 'r')
+    #     sql_insert_table_load = insert_file.read()
+    #     # file_path_csv1 = self.file_path_csv.split('\\')
+    #     # date_file = '1990-01-01'
+    #     # hour_file = random.randint(0, 23)
+    #     print(sql_insert_table_load.format(file_fullpath=filefullpath, file_name=filename, dt=dt1, hr=hr1 ))
+    #     self.cursor_obj.execute(sql_insert_table_load.format(file_fullpath=filefullpath, file_name=filename, dt=dt1, hr=hr1 ))
+    #     insert_file.close()
+
+
+
 
 # def insert_sql_raw(self, file_path_csv, file_path_sql):
 #     insert_raw = open(file_path_csv, 'r')

@@ -1,16 +1,10 @@
-from utils.sqlserver_utils import mysql_connector
-import yaml
-from yaml.loader import SafeLoader
 
+d1 = { 'a': 'dileep', 'b': 'Mahesh', 'c':'Guru'}
 
-with open("conf/onetime_db_paths.yml", 'r') as f:
-    data = yaml.load(f, Loader=SafeLoader)
-    # print(data['mydb']['driver'])
+str1 = "Hi {a}, How are you doing {b} "
 
-mysql_obj = mysql_connector(data['mydb']['driver'], data['mydb']['server'], data['mydb']['database'])
+print(str1.format(**d1))
 
-mysql_obj.cursor_obj.execute("select * From temp_emp_table")
+# exec('b' + '= 20')
+# print(b)
 
-
-for x in mysql_obj.cursor_obj:
-    print(x)
