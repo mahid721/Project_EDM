@@ -42,13 +42,20 @@ class mysql_connector:
 
 
 
-    def insert_sql_control_table(self, insert_sql_filepath, usecase, loadinterval, lastprocess):
-        insert_file = open(insert_sql_filepath, 'r')
-        sql_insert_table_load = insert_file.read()
-        self.cursor_obj.execute(sql_insert_table_load,usecase_name = usecase, load_interval= loadinterval, last_process = lastprocess)
-        insert_file.close()
+    def update_sql_control_table(self, update_sql_filepath, variable_dict):
+        update_sql_filepath = open(update_sql_filepath, 'r')
+        sql_update_file = update_sql_filepath.read()
+        print(sql_update_file.format(**variable_dict))
+        self.cursor_obj.execute(sql_update_file.format(**variable_dict))
+        update_sql_filepath.close()
 
 
 
 
+    #
+    # def insert_sql_control_table(self, insert_sql_filepath, usecase, loadinterval, lastprocess):
+    #     insert_file = open(insert_sql_filepath, 'r')
+    #     sql_insert_table_load = insert_file.read()
+    #     self.cursor_obj.execute(sql_insert_table_load,usecase_name = usecase, load_interval= loadinterval, last_process = lastprocess)
+    #     insert_file.close()
 
