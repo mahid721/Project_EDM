@@ -7,12 +7,9 @@ file_name = 'emp_data.csv'
 
 last_processed_file = '2022-07-29 07:10:00' # convert this sring into datetime
 last_processed_file_ts = datetime.strptime(last_processed_file, '%Y-%m-%d %H:%M:%S')
-# print(last_processed_file_ts)
-# print(type(last_processed_file_ts))
 cur_time = datetime.today()
 
 diff = cur_time - last_processed_file_ts
-# print(diff.total_seconds())
 diff_hours = int((int(diff.total_seconds()) / 60)/60)
 
 exepected_files = []
@@ -36,12 +33,12 @@ for x in range(1,diff_hours + 1):
 base_path = 'E:\DATA\EDM\incremental\**\*.*'
 
 files_edm = glob.glob(base_path, recursive=True)
-# print(files_edm)
+print(files_edm)
 
-file_tobe_process = []
+files_to_be_process = []
 for file_path in files_edm:
     if file_path in exepected_files:
-        file_tobe_process.append(file_path)
+        files_to_be_process.append(file_path)
 
 
-print(file_tobe_process)
+# print(files_to_be_process)

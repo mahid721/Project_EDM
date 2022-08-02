@@ -2,10 +2,10 @@
     driver : SQL Server Native Client 11.0
     server : MAHESHDASARI
     database : project_edm
-  base_path : 'E:\DATA\EDM\incremental\'
+  base_path : 'E:\DATA\EDM\incremental'
   execution_interval : hourly
   file_name: emp_data.csv
-  last_processed_file : 2022-07-29 13:00:00
+  last_processed_file_ts : 2022-07-29 13:00:00
   SQLS:
     DDL :
       - 'D:\Project_EDM\SQL\incremental\file_load\create_temp_emp_tbl_inc.sql'

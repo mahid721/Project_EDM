@@ -2,10 +2,11 @@ from utils.sqlserver_utils import mysql_connector
 import yaml
 from yaml.loader import SafeLoader
 import os
+from utils.check_data_files import expected_files, available_data_files, files_to_be_process, get_ts_from_path
+
 
 with open("conf/incremental_paths.yml", 'r') as f:
     data = yaml.load(f, Loader=SafeLoader)
-    # print(data['mydb']['driver'])
 
 mysql_obj = mysql_connector(data['mydb']['driver'], data['mydb']['server'], data['mydb']['database'])
 
@@ -13,21 +14,21 @@ for file_path in data['SQLS']['DDL']:
     print(file_path)
     mysql_obj.create_sql(file_path)
 
-for file_csv in data['base_path']:
-    if os.path.getsize(file_csv) > 0:
-        file_csv1 = file_csv.split('\\')
-        if file_csv1[-3][:3] == 'dt=':
-            dt_file = file_csv1[-3][3:]
-            print(dt_file)
-        if file_csv1[-2][:3] == 'hr=':
-            hr_file = file_csv1[-2][3:]
-            print(hr_file)
-        variable_dict = {'file_fullpath': file_csv, 'file_name': file_csv1[-1], 'dt': dt_file, 'hr': hr_file}
-        for file_path in data['SQLS']['DML']:
-            load = file_path.split('\\')
+expected_files_lst = expected_files(data['base_path'], data['file_name'], data['execution_interval'], data['last_processed_file_ts'])
+available_data_files_lst = available_data_files(data['base_path'])
+files_to_be_process_lst = files_to_be_process(available_data_files_lst, expected_files_lst)
+
+
+for file_full_path in files_to_be_process_lst:
+    if os.path.getsize(file_full_path) > 0:
+        variable_dict = get_ts_from_path(file_full_path)
+        for sql_file_path in data['SQLS']['DML']:
+            load = sql_file_path.split('\\')
             if load[-2] == 'file_load':
-                print('raw file path this is :', file_path)
-                mysql_obj.insert_sql_file_load(file_csv, file_path)
+                print('FILE_LOAD :: Executing SQL file  :', load[-1], 'for load dated : ', variable_dict['date_time'])
+                mysql_obj.insert_sql_file_load(file_full_path, sql_file_path)
             elif load[-2] == 'table_load':
-                print('final file path this is :', file_path)
-                mysql_obj.insert_sql_table_load(file_path, variable_dict)
+                print('TABLE_LOAD :: Executing SQL file  :', load[-1], 'for load dated : ', variable_dict['date_time'])
+                mysql_obj.insert_sql_table_load(sql_file_path, variable_dict)
+
+
