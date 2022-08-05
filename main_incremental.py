@@ -12,9 +12,9 @@ with open("conf/incremental_paths.yml", 'r') as f:
 
 mysql_obj = mysql_connector(data['mydb']['driver'], data['mydb']['server'], data['mydb']['database'])
 
-for file_path in data['SQLS']['DDL']:
-    print(file_path)
-    mysql_obj.create_sql(file_path)
+# for file_path in data['SQLS']['DDL']:
+#     print(file_path)
+#     mysql_obj.create_sql(file_path)
 
 mysql_obj.cursor_obj.execute("Select last_processed_file From file_execution_audit_inc where usecase_name = 'EDM'")
 for x in mysql_obj.cursor_obj:
@@ -39,6 +39,6 @@ for file_full_path in files_to_be_process_lst:
             elif file_full_path == files_to_be_process_lst[-1]:
                 print('Updating last_processed_file_ts :: Executing SQL file  :', load[-1], 'for load dated : ', variable_dict['date_time'])
                 mysql_obj.update_sql_control_table(sql_file_path, variable_dict)
-            time.sleep(30)
+            # time.sleep(30)
 
 
