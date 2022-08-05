@@ -15,5 +15,5 @@
     DML :
       - 'D:\Project_EDM\SQL\incremental\file_load\insert_temp_emp_tbl_inc.sql'
       - 'D:\Project_EDM\SQL\incremental\table_load\insert_raw_emp_tbl_inc.sql'
-      - 'D:\Project_EDM\SQL\incremental\table_load\insert_final_emp_tbl_inc.sql'
+      - 'D:\Project_EDM\SQL\incremental\table_load\update_insert_final_emp_tbl_inc.sql'
       - 'D:\Project_EDM\SQL\incremental\update_file_execution_audit_inc.sql'
