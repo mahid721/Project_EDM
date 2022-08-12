@@ -1,4 +1,3 @@
-import time
 
 from utils.sqlserver_utils import mysql_connector
 import yaml
@@ -32,6 +31,8 @@ for file_full_path in files_to_be_process_lst:
             load = sql_file_path.split('\\')
             if load[-2] == 'file_load':
                 print('FILE_LOAD :: Executing SQL file  :', load[-1], 'for load dated : ', variable_dict['date_time'])
+                print(file_full_path)
+                print(sql_file_path)
                 mysql_obj.insert_sql_file_load(file_full_path, sql_file_path)
             elif load[-2] == 'table_load':
                 print('TABLE_LOAD :: Executing SQL file  :', load[-1], 'for load dated : ', variable_dict['date_time'])
