@@ -1,0 +1,7 @@
+2022-08-10 11:19:30,753 - root - INFO - This is info message
+2022-08-10 11:19:30,753 - root - ERROR - this error message
+2022-08-10 11:19:30,755 - root - ERROR - Error Due to 
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\PycharmProjects\Project_EDM\practice_ruff\test4.py", line 31, in <module>
+    print(lst[x+1])
+IndexError: list index out of range
