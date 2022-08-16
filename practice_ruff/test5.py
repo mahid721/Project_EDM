@@ -1,7 +1,8 @@
 import logging
 
 
-def test_log():
-    logging.error('this error message')
+def num_test_log():
+    logging.info('This is info message --------------')
+    logging.error('this mahesh dasari error message')
 
 

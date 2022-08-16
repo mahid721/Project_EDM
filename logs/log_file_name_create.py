@@ -19,3 +19,4 @@ def log_file_name(log_file_path, log_file_prefix):
                         filemode='w'
                         # format= '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
                         )
+    return logging

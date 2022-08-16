@@ -1,6 +1,7 @@
 import logging
+import sys
 from datetime import datetime
-from test5 import test_log
+from test5 import num_test_log
 
 
 def log_file_name(log_file_path, log_file_prefix):
@@ -23,13 +24,13 @@ def log_file_name(log_file_path, log_file_prefix):
 log_file_name('C:\\Users\\Lenovo\\PycharmProjects\\Project_EDM\\logs\\', 'test11')
 
 logging.info('This is info message')
-test_log()
+num_test_log()
 
-lst = [1,2,3,4,5,6,7]
-try:
-    for x in range(len(lst)):
-        print(lst[x+1])
-except Exception as e:
-    logging.info('Error Due to ',e)
-    raise logging.exception('Error Due to ')
-    sys.exit
+# lst = [1,2,3,4,5,6,7]
+# try:
+#     for x in range(len(lst)):
+#         print(lst[x+1])
+# except Exception as e:
+#     logging.info('Error Due to ',e)
+    # raise logging.exception('Error Due to ')
+    # sys.exit
